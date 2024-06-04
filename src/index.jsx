@@ -26,3 +26,7 @@ function App() {
     )
 }
 
+ReactDom 
+.createRoot(document.getElementById('root'))
+.render(<App />);
+
