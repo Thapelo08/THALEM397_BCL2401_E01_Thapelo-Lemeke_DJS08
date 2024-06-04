@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import Home from "./src/Home"
 import About from "./src/About"
 import Vans from "./src/Vans"
+import VanDetail from "./src/vanDetail"
 
 import "./server"
 
@@ -11,16 +12,17 @@ function App() {
     return (
         <BrowserRouter>
         <header>
-            <link className="site-logo" to="/">#vanLife</link>
+            <Link className="site-logo" to="/">#vanLife</Link>
             <nav>
-                <link to="/about">About</link>
-                <link to="/vans">Vans</link>
+                <Link to="/about">About</Link>
+                <Link to="/vans">Vans</Link>
             </nav>
         </header>
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/vans" element={<Vans />} />
+            <Route path="/vans/:id" element={<VanDetail />} />
         </Routes>
         </BrowserRouter>
     )
