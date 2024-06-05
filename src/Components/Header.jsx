@@ -1,32 +1,47 @@
 import React from "react"
-import { Link, NavLink} from "react-router-dom"
+import { NavLink, Outlet } from "react-router-dom"
 
-export default function Header() {
+export default function HostLayout() {
     const activeStyles = {
         fontWeight: "bold",
-        textDecoration: "Underline",
+        textDecoration: "underline",
         color: "#161616"
     }
+
     return (
-        <header>
-            <Link className="site-logo" to="/">#vanLife</Link>
-            <nav>
-                <NavLink to="/host"
-                style={({isActive}) => isActive ? activeStyles : null}
+        <>
+            <nav className="host-nav">
+                <NavLink
+                    to="/host"
+                    end
+                    style={({ isActive }) => isActive ? activeStyles : null}
                 >
-                  Host
-                  </NavLink>
-                 <NavLink to="/about"
-                 style={({isActive}) => isActive ? activeStyles : null}
-                 >
-                    About
-                    </NavLink>
-                <NavLink to="/vans"
-                style={({isActive}) => isActive ? activeStyles : null}
+                    Dashboard
+                </NavLink>
+
+                <NavLink
+                    to="/host/income"
+                    style={({ isActive }) => isActive ? activeStyles : null}
+                >
+                    Income
+                </NavLink>
+                
+                <NavLink
+                    to="/host/vans"
+                    style={({ isActive }) => isActive ? activeStyles : null}
                 >
                     Vans
-                    </Link>
+                </NavLink>
+
+                <NavLink
+                    to="/host/reviews"
+                    style={({ isActive }) => isActive ? activeStyles : null}
+                >
+                    Reviews
+                </NavLink>
+
             </nav>
-        </header>
+            <Outlet />
+        </>
     )
 }

@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDom from "react-dom/cllient";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
-import Home from "./src/Home";
-import About from "./src/About";
-import Vans from "./src/Vans";
-import VanDetail from "./src/vanDetail";
+import Home from "./Home";
+import About from "./About";
+import Vans from "./Vans";
+import VanDetail from "./VanDetail";
 import Dashboard from "./Hosts/Dashboard";
 import Income from "./Hosts/Income";
 import Reviews from "./Hosts/Reviews";
