@@ -1,47 +1,42 @@
-import React from "react"
-import { NavLink, Outlet } from "react-router-dom"
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
-export default function HostLayout() {
+export default function Header() {
     const activeStyles = {
         fontWeight: "bold",
         textDecoration: "underline",
         color: "#161616"
     }
-
+    
     return (
-        <>
-            <nav className="host-nav">
-                <NavLink
+        <header>
+            <Link className="site-logo" to="/">#VanLife</Link>
+            <nav>
+                <NavLink 
                     to="/host"
-                    end
-                    style={({ isActive }) => isActive ? activeStyles : null}
+                    style={({isActive}) => isActive ? activeStyles : null}
                 >
-                    Dashboard
+                    Host
                 </NavLink>
-
-                <NavLink
-                    to="/host/income"
-                    style={({ isActive }) => isActive ? activeStyles : null}
+                <NavLink 
+                    to="/about"
+                    style={({isActive}) => isActive ? activeStyles : null}
                 >
-                    Income
+                    About
                 </NavLink>
-                
-                <NavLink
-                    to="/host/vans"
-                    style={({ isActive }) => isActive ? activeStyles : null}
+                <NavLink 
+                    to="/vans"
+                    style={({isActive}) => isActive ? activeStyles : null}
                 >
                     Vans
                 </NavLink>
-
-                <NavLink
-                    to="/host/reviews"
-                    style={({ isActive }) => isActive ? activeStyles : null}
-                >
-                    Reviews
-                </NavLink>
-
+                <Link to="login" className="login-link">
+                    <img 
+                        src="../assets/images/avatar-icon.png" 
+                        className="login-icon"
+                    />
+                </Link>
             </nav>
-            <Outlet />
-        </>
+        </header>
     )
 }
