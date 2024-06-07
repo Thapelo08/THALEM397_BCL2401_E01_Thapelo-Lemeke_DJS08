@@ -9,14 +9,16 @@ export default function Login() {
     const [error, setError] = React.useState(null)
     
     const location = useLocation()
+    const navigate = useNavigate()
     
     function handleSubmit(e) {
         e.preventDefault()
         setStatus("submitting")
         loginUser(loginFormData)
             .then(data => {
-                console.log(data)
                 setError(null)
+                localStorage.setItem("loggedin", true)
+                navigate("/host")
             })
             .catch(err => {
                 setError(err)

@@ -1,37 +1,41 @@
 import React from "react";
 import ReactDom from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
-import Home from "./Vans/Home";
-import About from "./Vans/About";
-import Vans from "./Vans";
-import VanDetail from "./VanDetail";
-import Dashboard from "./Hosts/Dashboard";
-import Income from "./Hosts/Income";
-import Reviews from "./Hosts/Reviews";
-import HostVans from "./Hosts/HostVans";
-import HostVanDetail from "./Hosts/HostVanDetail";
-import HostVanInfo from "./Hosts/HostVanInfo";
-import HostVanPricing from "./Hosts/HostVanPricing";
-import HostVanPhotos from "./Hosts/HostVanPhotos";
-import NotFound from "./NotFound";
+import Home from "../src/Home";
+import About from "../src/About";
+import Vans from "../src/Vans/Vans";
+import VanDetail from "../src/Vans/VanDetail";
+import Login from "../"
+import Dashboard from "../src/Hosts/Dashboard";
+import Income from "../src/Hosts/Income";
+import Reviews from "../src/Hosts/Reviews";
+import HostVans from "../src/Hosts/HostVans";
+import HostVanDetail from "../src/Hosts/HostVanDetail";
+import HostVanInfo from "../src/Hosts/HostVanInfo";
+import HostVanPricing from "../src/Hosts/HostVanPricing";
+import HostVanPhotos from "../src/Hosts/HostVanPhotos";
+import NotFound from "../src/NotFound";
 import Layout from "./Components/layout";
 import HostLayout from "./Components/HostLayout";
+import AuthRequired from "./Components/AuthRequired";
 
-import "./server"
+import "./server";
 
 function App() {
-    return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="vans" element={<Vans />} />
-            <Route path="vans/:id" element={<VanDetail />} />
-            <Route
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="vans" element={<Vans />} />
+          <Route path="vans/:id" element={<VanDetail />} />
+          <Route
             path="login"
-            element={<login />} />
-            
+            element={<Login />}
+          />
+
+          <Route element={<AuthRequired />}>
             <Route path="host" element={<HostLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="income" element={<Income />} />
@@ -43,17 +47,13 @@ function App() {
                 <Route path="photos" element={<HostVanPhotos />} />
               </Route>
             </Route>
-            <Route path="*" element={<NotFound />} />
           </Route>
-        </Routes>
-      </BrowserRouter>
-    )
-  }
-  
 
-ReactDom 
-.createRoot(document.getElementById('root'))
-.render(<App />);
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
+}
 
-export default App
-
+ export default App
